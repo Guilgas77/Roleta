@@ -1,0 +1,163 @@
+:root{
+  --bg1:#1e1f2b;
+  --fg:#f5f7ff;
+  --muted:#b7b9c9;
+  --accent:#ff6584;
+  --ring:#ffffff22;
+  --card:#ffffff0f;
+  --ok:#27c17a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Inter, sans-serif;
+  color:var(--fg);
+  background:radial-gradient(1000px 600px at 30% 10%, #2b2d46, var(--bg1)) fixed;
+}
+.app{
+  max-width:1000px;
+  margin:32px auto;
+  padding:0 16px 64px;
+}
+.controls{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;
+}
+.controls input{
+  flex:1;padding:12px 14px;border-radius:10px;
+  border:1px solid var(--ring);background:var(--card);color:var(--fg);
+}
+.controls button{
+  padding:12px 16px;border:none;border-radius:10px;
+  background:var(--accent);color:white;font-weight:600;cursor:pointer;
+}
+.controls .ghost{
+  background:transparent;border:1px solid var(--ring);color:var(--muted);
+}
+.layout{
+  display:grid;grid-template-columns:1fr 320px;gap:24px;
+}
+@media (max-width:860px){.layout{grid-template-columns:1fr}}
+.wheel-wrap{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  background:var(--card);border:1px solid var(--ring);
+  border-radius:16px;padding:20px 16px 12px;
+}
+#wheel{
+  width:420px;height:420px;max-width:100%;
+  border-radius:50%;
+  box-shadow:
+    inset -8px -8px 20px rgba(255,255,255,0.2),
+    inset 8px 8px 20px rgba(0,0,0,0.4),
+    0 10px 25px rgba(0,0,0,0.6);
+  background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 70%);
+}
+.pointer{
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;
+  border-bottom:20px solid var(--ok);
+}
+.hint{margin-top:10px;color:var(--muted);font-size:13px}
+.lista{
+  background:var(--card);border:1px solid var(--ring);
+  border-radius:16px;padding:14px;
+}
+#lista{
+  list-style:none;display:flex;flex-wrap:wrap;gap:6px;
+}
+#lista li{
+  display:flex;align-items:center;gap:6px;
+  background:#ffffff0d;border:1px solid var(--ring);
+  padding:6px 8px;border-radius:10px;font-size:14px;
+}
+#lista .tag{
+  width:10px;height:10px;border-radius:50%;
+}
+#resultado{
+  margin-top:20px;font-size:18px;
+}
+/* ======== Estilos das abas ======== */
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.tab-btn {
+  flex: 1;
+  padding: 8px;
+  background: var(--card);
+  border: 1px solid var(--ring);
+  border-radius: 8px;
+  color: var(--fg);
+  font-weight: 600;
+  cursor: pointer;
+}
+.tab-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ======== Lista de sorteados ======== */
+#sorteados {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+#sorteados li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff0d;
+  border: 1px solid var(--ring);
+  padding: 6px 8px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* ======== Overlay do vencedor ======== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.overlay-card {
+  background: var(--card);
+  padding: 30px 40px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--ring);
+  max-width: 90%;
+}
+.overlay-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+.winner-name {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.overlay-close {
+  background: var(--ok);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
