@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roleta do Amigo Secreto</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Amigo ladrão</h1>
+
+    <section class="controls">
+      <input id="nome" type="text" placeholder="Digite um nome" />
+      <button id="btn-add">Adicionar</button>
+      <button id="btn-spin">Girar</button>
+      <button id="btn-clear" class="ghost">Limpar</button>
+    </section>
+
+    <section class="layout">
+      <div class="wheel-wrap">
+        <div class="pointer"></div>
+        <canvas id="wheel" width="420" height="420" aria-label="Roleta"></canvas>
+        <p class="hint">Clique na roleta ou use o botão “Girar”.</p>
+      </div>
+
+      <aside class="side">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="participantes" id="tab-btn-participantes">Participantes</button>
+          <button class="tab-btn" data-tab="sorteados" id="tab-btn-sorteados">Sorteados</button>
+        </div>
+
+        <div class="tab-panels">
+          <div id="tab-participantes" class="tab-panel active">
+            <h2>Participantes</h2>
+            <ul id="lista"></ul>
+          </div>
+
+          <div id="tab-sorteados" class="tab-panel">
+            <h2>Já sorteados</h2>
+            <ul id="sorteados"></ul>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="resultado">
+      <div id="resultado"></div>
+    </section>
+  </main>
+
+  <!-- Overlay do vencedor -->
+  <div id="overlay" class="overlay" aria-hidden="true">
+    <div class="overlay-card" role="dialog" aria-modal="true" aria-labelledby="winner-name">
+      <p class="overlay-title">O sorteado da vez foi</p>
+      <h2 id="winner-name" class="winner-name"></h2>
+      <button id="overlay-close" class="overlay-close" aria-label="Fechar">OK</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
